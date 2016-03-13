@@ -19,6 +19,7 @@ public class e3 {
         for (int i = 0; i<50; i++){
             exec.execute(new MyTask2());
         }
+        exec.shutdown();
         System.out.println("Program stops");
     }
     

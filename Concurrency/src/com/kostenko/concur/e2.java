@@ -5,6 +5,8 @@
  */
 package com.kostenko.concur;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Pavel
@@ -12,6 +14,7 @@ package com.kostenko.concur;
 
 class MyFibonacci implements Runnable {
     
+        
     private static int taskNumb = 0;
     private int id = taskNumb++;
     private int count = 0;
@@ -22,9 +25,11 @@ class MyFibonacci implements Runnable {
     }
 
     public void run() {
+        Integer [] ints = new Integer [numb];
         for (int i = 0; i < numb; i++) {
-            System.out.print(id + "_" + next() + " ");
+            ints[i] = next();
         }
+        System.out.println("Sequence " + id + ": " + Arrays.toString(ints));
     }
     
     public Integer next() {
@@ -42,7 +47,7 @@ class MyFibonacci implements Runnable {
 public class e2 {
     public static void main(String[] args) {
         for (int i = 0; i<5; i++){
-            new Thread(new MyFibonacci(10)).start();
+            new Thread(new MyFibonacci(i)).start();
         }
     }
 }
